@@ -1,10 +1,12 @@
 package P0803.AddressBook;
 
+import java.io.Serializable;
+
 /*
  * VO
  */
 
-public class Member {
+public class Member implements Serializable {
     // private. 클래스 밖에서 안보임. get and set 제공
     private String name;
     private String tel;

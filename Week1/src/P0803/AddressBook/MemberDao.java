@@ -14,6 +14,9 @@ public class MemberDao {
     public int getCount() {
         return this.count;
     }
+    public Member[] getDatas() {
+        return datas;
+    }
 
     public MemberDao() {
         datas = new Member[30];

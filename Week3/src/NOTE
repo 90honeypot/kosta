@@ -1,0 +1,44 @@
+
+1차 스트림 (기본 스트림) : 입출력 기본 동작 수행, 단독으로 작동
+    - FileInputStream / FileOutputStream / FileReader/ FileWriter
+
+2차 스트림 (보조 스트림) : 기본 스트림에 기능을 추가, 단독으로 작동 불가, 기본 스트림에 연결해서 사용.
+                      바이트/문자 맞춰주고, 입출력 방향도 맞춰서 연결.
+    - BufferedInputStream / BufferedOutputStream / BufferedReader / BufferedWriter
+    - InputStreamReader / OutputStreamWriter
+    - DataInputStream / DataOutputStream
+    - ObjectInputStream / ObjectOutputStream
+    - RandomAccessStream
+    ...
+
+
+
+1. BufferedInputStream / BufferedOutputStream / BufferedReader / BufferedWriter
+    - 기본 스트림에 버퍼 제공 (속도 개선)
+    '''
+    FileInputStream fi = new FileInputStream("a.txt");      // 기본 스트림 생성
+    BufferedInputStream bi = new BufferedInputStream(fi);   // 보조 스트림 생성 및 기본 스트림에 연결
+    bi.read()                                               // 읽기에 버퍼가 사용됨
+    
+    bi.close()                                              // 사용 완료 후 스트림 닫기
+    fi.close()
+    '''
+2. InputStreamReader / OutputStreamWriter
+    - 바이트 값을 문자로 변환해서 입출력함
+
+3. DataInputStream / DataOutputStream
+    - 데이터 타입별로 읽고 쓴다
+
+4. ObjectInputStream / ObjectOutputStream
+    - 객체 단위로 읽고 씀
+    ObjectInputStream, ObjectOutputStream 의 대상이 되는 클래스는 직렬화처리 해야함
+    * 직렬화? 객체가 갖는 멤버변수 값을 한줄로 줄줄이 세워서 보내는거
+     : 메서드 파라미터로 객체 전달 시 객체의 참조값 대신 멤버변수 값들을 한줄로 세워 보내는것
+     : 직렬화와 메서드는 상관없다.
+     : 자바에서 직렬화 처리는 Serializable 인터페이스를 상속받음으로 처리됨
+
+5. RandomAccessStream
+    - 파일의 랜덤 위치 읽기/쓰기
+    - seek(절대위치(커서위치)) : 커서 위치 변경
+    - read() : 한바이트 읽음
+    - write(int) : 한바이트 씀

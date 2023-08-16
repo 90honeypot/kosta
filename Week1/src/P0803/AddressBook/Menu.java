@@ -10,6 +10,7 @@ public class Menu {
     }
 
     public void run(Scanner sc) {
+        service.start();
         
         boolean flag = true;
         int num;
@@ -34,6 +35,7 @@ public class Menu {
                     service.printAllMember();
                     break;
                 case 6:
+                    service.stop();
                     flag = false;
                     break;
                 default:
